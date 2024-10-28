@@ -61,22 +61,25 @@
   var myChart1 = new Chart(ctx1, {
     type: "bar",
     data: {
-      labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
+      labels: [
+        "35 min",
+        "30 min",
+        "25 min",
+        "20 min",
+        "15 min",
+        "10 min",
+        "5 min",
+      ],
       datasets: [
         {
-          label: "Mexico",
-          data: [15, 30, 55, 65, 60, 80, 95],
-          backgroundColor: "rgba(0, 156, 255, .7)",
+          label: "Temperatura reactor",
+          data: [35, 35, 35, 35, 35, 35, 35],
+          backgroundColor: "green",
         },
         {
-          label: "UK",
-          data: [8, 35, 40, 60, 70, 55, 75],
-          backgroundColor: "rgba(0, 156, 255, .5)",
-        },
-        {
-          label: "AU",
-          data: [12, 25, 45, 55, 65, 70, 60],
-          backgroundColor: "rgba(0, 156, 255, .3)",
+          label: "Temperatura ambiental",
+          data: [36, 37, 36, 35, 37, 35, 35],
+          backgroundColor: "black",
         },
       ],
     },
@@ -90,18 +93,26 @@
   var myChart2 = new Chart(ctx2, {
     type: "line",
     data: {
-      labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
+      labels: [
+        "35 min",
+        "30 min",
+        "25 min",
+        "20 min",
+        "15 min",
+        "10 min",
+        "5 min",
+      ],
       datasets: [
         {
-          label: "Oxigeno Ambiente",
+          label: "Co2 Ambiente",
           data: [15, 30, 55, 45, 70, 65, 85],
-          backgroundColor: "rgba(0, 156, 255, .5)",
+          backgroundColor: "white",
           fill: true,
         },
         {
-          label: "Oxígeno producido",
+          label: "Co2 producido",
           data: [99, 135, 170, 130, 190, 180, 270],
-          backgroundColor: "rgba(0, 156, 255, .3)",
+          backgroundColor: "green",
           fill: true,
         },
       ],
