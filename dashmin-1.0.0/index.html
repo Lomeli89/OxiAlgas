@@ -187,7 +187,7 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Temperatura del Bioreactor</p>
-                                <h6 class="mb-0">32.38 °C</h6>
+                                <h6 class="mb-0" id="temp_bioreactor">32.38 °C</h6>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Temperatura Ambiental</p>
-                                <h6 class="mb-0">32.43°C</h6>
+                                <h6 class="mb-0"id="temp_ambiente">32.43°C</h6>
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Presión Atmosferica</p>
-                                <h6 class="mb-0">1002.41 hPa</h6>
+                                <h6 class="mb-0" id="presion_atmosferica">1002.41 hPa</h6>
                             </div>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Humedad Ambiente</p>
+                                <p class="mb-2" id="humedad_ambiente">Humedad Ambiente</p>
                                 <h6 class="mb-0">52.71 °C</h6>
                             </div>
                         </div>
@@ -227,7 +227,7 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Solidos Totales Disueltos(TDS):</p>
-                                <h6 class="mb-0">495.3 ppm</h6>
+                                <h6 class="mb-0" id="TDS">495.3 ppm</h6>
                             </div>
                         </div>
                     </div>
@@ -235,8 +235,8 @@
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">TVOC:</p>
-                                <h6 class="mb-0">27 ppb</h6>
+                                <p class="mb-2">TVOC presente(Gases volatiles):</p>
+                                <h6 class="mb-0" id="TVOC">27 ppb</h6>
                             </div>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Intensidad de la luz:</p>
-                                <h6 class="mb-0">21</h6>
+                                <h6 class="mb-0" id="Intensidad_luz">21</h6>
                             </div>
                         </div>
                     </div>
@@ -254,7 +254,40 @@
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Color Agua(Hex)</p>
-                                <h6 class="mb-0">#FFFFFF</h6>
+                                <h6 class="mb-0" id="color">#FFFFFF</h6>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <div class="row g-4">
+                    
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Co2 presente:</p>
+                                <h6 class="mb-0" id="C02">400.3 ppm</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">co2 presente en el Bioreactor:</p>
+                                <h6 class="mb-0">27 ppm</h6>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">TVOC del bioreactor</p>
+                                <h6 class="mb-0" >0 ppm</h6>
                             </div>
                         </div>
                     </div>
