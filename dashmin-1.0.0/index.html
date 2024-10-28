@@ -31,7 +31,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="init()">
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -187,7 +187,7 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Temperatura del Bioreactor</p>
-                                <h6 class="mb-0" id="temp_bioreactor">32.38 °C</h6>
+                                <h6 class="mb-0" id="temp_bioreactor"></h6>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Temperatura Ambiental</p>
-                                <h6 class="mb-0"id="temp_ambiente">32.43°C</h6>
+                                <h6 class="mb-0"id="temp_ambiente"></h6>
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Presión Atmosferica</p>
-                                <h6 class="mb-0" id="presion_atmosferica">1002.41 hPa</h6>
+                                <h6 class="mb-0" id="presion_ambiente"></h6>
                             </div>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2" id="humedad_ambiente">Humedad Ambiente</p>
-                                <h6 class="mb-0">52.71 °C</h6>
+                                <h6 class="mb-0" id="humedad_ambiente"> </h6>
                             </div>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Solidos Totales Disueltos(TDS):</p>
-                                <h6 class="mb-0" id="TDS">495.3 ppm</h6>
+                                <h6 class="mb-0" id="TDS"></h6>
                             </div>
                         </div>
                     </div>
@@ -236,7 +236,7 @@
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">TVOC presente(Gases volatiles):</p>
-                                <h6 class="mb-0" id="TVOC">27 ppb</h6>
+                                <h6 class="mb-0" id="TVOC"></h6>
                             </div>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Intensidad de la luz:</p>
-                                <h6 class="mb-0" id="Intensidad_luz">21</h6>
+                                <h6 class="mb-0" id="Intensidad_luz"></h6>
                             </div>
                         </div>
                     </div>
@@ -254,7 +254,7 @@
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Color Agua(Hex)</p>
-                                <h6 class="mb-0" id="color">#FFFFFF</h6>
+                                <h6 class="mb-0" id="color"></h6>
                             </div>
                         </div>
                     </div>
@@ -268,7 +268,7 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Co2 presente:</p>
-                                <h6 class="mb-0" id="C02">400.3 ppm</h6>
+                                <h6 class="mb-0" id="CO2">400.3 ppm</h6>
                             </div>
                         </div>
                     </div>
@@ -544,6 +544,37 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+    <script>
+        var ws;
+
+        function init() {
+            // Cambia '192.168.1.76' por la dirección IP de tu ESP32
+            ws = new WebSocket('ws://192.168.1.76:81'); // IP del ESP32
+
+            ws.onopen = function() {
+                console.log("Conectado al WebSocket");
+                // Enviar un mensaje para solicitar datos del sensor
+                ws.send("GET_DATA");
+            };
+
+            ws.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                document.getElementById("temp_bioreactor").innerText = "Temperatura: " + data.temperatureWater + " °C";
+                document.getElementById("temp_ambiente").innerText = "Temperatura: " + data.temperatureBME + " °C";
+                document.getElementById("presion_ambiente").innerText = "Presión: " + data.pressure + " hPa";
+                document.getElementById("humedad_ambiente").innerText = "Humedad: " + data.humidity + " %";
+                document.getElementById("TDS").innerText = "TDS: " + data.TDS + " ppm";
+                document.getElementById("CO2").innerText = "CO₂: " + data.CO2 + " ppm";
+                document.getElementById("TVOC").innerText = "TVOC: " + data.TVOC + " ppb";
+                document.getElementById("color").innerText = "Color Hexadecimal: " + data.colorHex;
+                document.getElementById("Intensidad_luz").innerText = "Intensidad de la luz:" + data.lux;
+            };
+
+            ws.onclose = function() {
+                console.log("Desconectado del WebSocket");
+            };
+        }
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
